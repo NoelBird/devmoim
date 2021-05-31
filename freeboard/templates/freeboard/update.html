@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<form action="{% url 'freeboard:update' writing.pk %}" method="POST">
+    {% csrf_token %}
+    <label for="title" class="form-label">제목</label>
+    <input type="text" name="title" id="title" class="form-control" value="{{writing.title}}"><br>
+    <label for="content" class="form-label">내용</label>
+    <textarea name="content" id="content" cols="30" rows="10" class="form-control">{{writing.content}}</textarea><br>
+    <input type="submit" value="수정">
+</form>
+{% endblock %}

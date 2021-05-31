@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'freeboard/css/bootstrap.css' %}">
+<h2>
+    <strong>Free Board</strong>
+</h2>
+<br>
+<table class="table table-hover">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">제목</th>
+        <th scope="col">생성 시각</th>
+        <th scope="col">업데이트 시각</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for writing in writings %}
+        <tr>
+        <th scope="row">{{writing.pk}}</th>
+        <td><a href="{% url 'freeboard:detail' writing.pk %}">{{writing.title}}</a></td>
+        <td>{{writing.created_at}}</td>
+        <td>{{writing.updated_at}}</td>
+        </tr>
+        {% empty %}
+        <tr>
+        <th scope="row">empty</th>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    <div class="float-end">
+    <a href="{% url 'freeboard:create' %}" class="btn btn-outline-primary">새 글 작성</a>
+</div>
+
+
+
+{% endblock %}

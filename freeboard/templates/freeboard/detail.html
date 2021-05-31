@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{{writing.title}}</h2>
+<br>
+<p>
+    작성 시각: {{writing.created_at}} <br>
+    최종 업데이트 시각: {{writing.updated_at}}
+</p>
+<hr>
+<p>
+    {{writing.content}}
+</p>
+<a href="{% url 'freeboard:update' writing.pk %}" class="btn btn-light btn-outline-primary">수정</a>
+<a href="{% url 'freeboard:index' %}" class="btn btn-light btn-outline-primary">목차</a>
+{% endblock %}
