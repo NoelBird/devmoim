@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<form action="{% url 'accounts:login' %}" method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="username" class="form-label">username</label>
+        <input type="text" class="form-control" id="username" name="username">
+    </div>
+    <div class="mb-3">
+        <label for="passwd" class="form-label">Password</label>
+        <input type="password" class="form-control" id="passwd" name="passwd">
+    </div>
+    <button type="submit" class="btn btn-primary">로그인</button>
+</form>
+{% endblock %}

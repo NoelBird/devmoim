@@ -4,6 +4,7 @@ __pycache__/
 
 # django
 migrations/
+static/
 
 # db
 db.sqlite3
