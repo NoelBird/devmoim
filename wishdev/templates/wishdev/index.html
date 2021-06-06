@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>
+    <strong>개발하고 싶은 것 목록</strong>
+</h2>
+<div class="float-end">
+    <a href="{% url 'wishdev:create' %}" class="btn btn-outline-primary">새 글 작성</a>
+</div>
+<br>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col" colspan="3">하고 싶은 일</th>
+            <th scope="col">생성 시각</th>
+            <th scope="col">업데이트 시각</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for writing in writings %}
+        <tr>
+            <th scope="row">{{writing.pk}}</th>
+            <td colspan="3"><a href="{% url 'wishdev:detail' writing.pk %}">{{writing.title}}</a></td>
+            <td>{{writing.user.username}}</td>
+            <td>{{writing.created_at |date:"SHORT_DATETIME_FORMAT"}}</td>
+            <td>{{writing.updated_at |date:"SHORT_DATETIME_FORMAT"}}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <th scope="row">empty</th>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table><br>
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+        </li>
+        {% for num_of_page in num_of_pages %}
+        {% if num_of_page == page %}
+        <li class="page-item active" aria-current="page">
+            <span class="page-link">{{page}}</span>
+        </li>
+        {% else %}
+        <li class="page-item"><a class="page-link"
+                href="{% url 'wishdev:index' %}?page={{num_of_page}}">{{num_of_page}}</a></li>
+        {% endif %}
+
+        {% endfor %}
+        <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+        </li>
+    </ul>
+</nav>
+{% endblock %}

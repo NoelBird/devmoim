@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("freeboard.urls")),
     path('accounts/', include("accounts.urls")),
+    path('wishdev', include('wishdev.urls')),
 ]

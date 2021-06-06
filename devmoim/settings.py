@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'freeboard',
     'accounts',
+    'wishdev',
 ]
 
 MIDDLEWARE = [
